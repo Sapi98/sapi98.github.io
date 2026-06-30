@@ -1,0 +1,10 @@
+
+# Ignore any cache folders anywhere in the repo
+**/cache/
+**/cache/**
+
+# macOS Finder metadata
+.DS_Store
+
+# zip archives
+*.zip
