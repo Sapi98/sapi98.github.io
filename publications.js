@@ -226,6 +226,10 @@ function renderAllSummary() {
   `;
 }
 
+function highlightMyName(authors) {
+  return authors.replaceAll("S. Biswas", "<strong>S. Biswas</strong>");
+}
+
 function renderCard(pub, index) {
   const view = pub.link && pub.link !== "#"
     ? `<a class="btn btn-small btn-soft" href="${pub.link}" target="_blank" rel="noopener">View</a>`
@@ -238,7 +242,7 @@ function renderCard(pub, index) {
         <span class="pub-meta">${categoryLabels[pub.type]}</span>
       </div>
       <h3>${pub.title}</h3>
-      <p class="pub-authors">${pub.authors}</p>
+      <p class="pub-authors">${highlightMyName(pub.authors)}</p>
       <p class="pub-venue">${pub.venue}</p>
       <div class="pub-actions">
         ${view}
