@@ -66,34 +66,64 @@ document.addEventListener("DOMContentLoaded", () => {
 function updateTimelineProgress() {
   document.querySelectorAll(".timeline-modern").forEach(timeline => {
     const rect = timeline.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const viewportHeight =
+      window.innerHeight || document.documentElement.clientHeight;
+
+    /*
+      This controls the moving line length.
+      Keep this synced with the CSS:
+      .timeline-modern::after {
+        top: 10px;
+        max-height: calc(100% - 20px);
+      }
+    */
+    const lineTopOffset = 10;
+    const lineBottomOffset = 10;
+    const lineMaxHeight = timeline.offsetHeight - lineTopOffset - lineBottomOffset;
+
     const start = viewportHeight * 0.70;
     const end = viewportHeight * 0.30;
 
     let progress = (start - rect.top) / (rect.height - (start - end));
     progress = Math.max(0, Math.min(1, progress));
 
-    timeline.style.setProperty("--timeline-progress", `${(progress * 100).toFixed(2)}%`);
+    timeline.style.setProperty(
+      "--timeline-progress",
+      `${(progress * 100).toFixed(2)}%`
+    );
 
-    let bestEntry = null;
-    let bestDistance = Infinity;
+    /*
+      Convert the visual line progress into an actual Y-position
+      inside the timeline container.
+    */
+    const lineEndY = lineTopOffset + progress * lineMaxHeight;
+
+    let activeEntry = null;
 
     timeline.querySelectorAll(".timeline-entry").forEach(entry => {
-      const entryRect = entry.getBoundingClientRect();
-      const center = entryRect.top + entryRect.height / 2;
-      const distance = Math.abs(center - viewportHeight * 0.45);
+      const node = entry.querySelector(".timeline-node");
 
-      if (distance < bestDistance) {
-        bestDistance = distance;
-        bestEntry = entry;
+      if (!node) return;
+
+      const nodeRect = node.getBoundingClientRect();
+
+      /*
+        Bullet center relative to the top of the timeline container.
+      */
+      const nodeCenterY =
+        nodeRect.top - rect.top + nodeRect.height / 2;
+
+      /*
+        The active bullet is the latest bullet that the progress line
+        has reached or passed.
+      */
+      if (lineEndY >= nodeCenterY) {
+        activeEntry = entry;
       }
     });
 
     timeline.querySelectorAll(".timeline-entry").forEach(entry => {
-      entry.classList.toggle(
-        "is-active",
-        entry === bestEntry && bestDistance < viewportHeight * 0.45
-      );
+      entry.classList.toggle("is-active", entry === activeEntry);
     });
   });
 }
