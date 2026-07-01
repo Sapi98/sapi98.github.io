@@ -1,0 +1,11 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "command": true,
+        "prettier": true,
+        "npx prettier": true,
+        "/^cd /Volumes/Work/Profile\\\\ Page/sapi98\\.github\\.io && python3 - <<'PY'\nfrom pathlib import Path\nfrom bs4 import BeautifulSoup\np = Path\\('index\\.html'\\)\nhtml = p\\.read_text\\(encoding='utf-8'\\)\nsoup = BeautifulSoup\\(html, 'html\\.parser'\\)\np\\.write_text\\(soup\\.prettify\\(\\), encoding='utf-8'\\)\nprint\\('Formatted', p\\)\nPY\nsed -n '1,40p' index\\.html$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

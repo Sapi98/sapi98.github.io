@@ -24,13 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const obs = new IntersectionObserver(
     entries =>
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          obs.unobserve(entry.target);
-        }
-      }),
-    { threshold: 0.12 }
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    }), {
+      threshold: 0.12
+    }
   );
 
   document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
@@ -90,5 +91,7 @@ function updateTimelineProgress() {
   });
 }
 
-window.addEventListener("scroll", updateTimelineProgress, { passive: true });
+window.addEventListener("scroll", updateTimelineProgress, {
+  passive: true
+});
 window.addEventListener("resize", updateTimelineProgress);
