@@ -1401,3 +1401,101 @@ body[data-theme="dark"] .credential-card:hover {
 .publication-card:hover .pub-authors strong {
   color: #fffaf0;
 }
+
+/* Slightly larger homepage profile picture */
+
+/* .profile-photo-frame {
+  width: 162px;
+  height: 162px;
+}
+
+.profile-photo-frame img,
+.profile-initials {
+  width: 130px;
+  height: 130px;
+} */
+
+/* Larger homepage profile picture */
+
+.profile-photo-frame {
+  width: 174px;
+  height: 174px;
+}
+
+.profile-photo-frame img,
+.profile-initials {
+  width: 140px;
+  height: 140px;
+}
+
+/* Footer layout refinement
+   - Give writing area more room
+   - Make footer icon area slightly narrower
+   - Allow more footer links to wrap to a second row
+   - Keep homepage footer email icon visually balanced
+*/
+
+/* Text area gets priority */
+.site-footer > div:first-child {
+  flex: 1 1 auto;
+  min-width: 260px;
+}
+
+/* Icon/link area becomes a bit narrower on non-home pages */
+.site-footer:not(.home-footer) .footer-links {
+  flex: 0 1 420px;
+  max-width: 420px;
+  justify-content: flex-end;
+}
+
+/* Keep footer links compact but readable */
+.site-footer:not(.home-footer) .footer-link {
+  padding: 8px 10px;
+}
+
+/* Homepage has only Email, so keep it visually smaller and cleaner */
+.home-footer .footer-links {
+  flex: 0 0 auto;
+  max-width: none;
+}
+
+.home-footer .footer-link {
+  padding: 7px 10px;
+  align-items: center;
+}
+
+/* Control homepage Email icon height independently */
+.home-footer .footer-icon {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  max-width: 20px !important;
+  min-height: 20px !important;
+  max-height: 20px !important;
+  font-size: .72rem !important;
+  line-height: 1 !important;
+}
+
+/* Keep other page footer icons at the original balanced size */
+.site-footer:not(.home-footer) .footer-icon {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  max-width: 22px;
+  min-height: 22px;
+  max-height: 22px;
+}
+
+/* Tablet/mobile: let footer links use full width naturally */
+@media (max-width: 900px) {
+  .site-footer > div:first-child {
+    min-width: 0;
+  }
+
+  .site-footer:not(.home-footer) .footer-links,
+  .home-footer .footer-links {
+    flex: 1 1 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+}
