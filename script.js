@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     theme.onclick = () => {
       body.dataset.theme = body.dataset.theme === "dark" ? "light" : "dark";
       localStorage.setItem("theme", body.dataset.theme);
+      updateTimelineProgress();
     };
   }
 
@@ -17,35 +18,46 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.onclick = () => nav.classList.toggle("open");
   }
 
-  const cur = location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".site-nav a").forEach(a => {
-    if (a.getAttribute("href") === cur) a.classList.add("active");
+  const currentPage = location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".site-nav a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
   });
 
-  const obs = new IntersectionObserver(
-    entries =>
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        obs.unobserve(entry.target);
-      }
-    }), {
-      threshold: 0.12
-    }
+  const revealObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
   );
 
-  document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+  document.querySelectorAll(".reveal").forEach(element => {
+    revealObserver.observe(element);
+  });
 
-  document.querySelectorAll(".expand-summary").forEach(btn => {
-    btn.onclick = () => {
-      const card = btn.closest(".expand-card");
-      const open = card.classList.toggle("open");
-      const icon = btn.querySelector(".accordion-icon");
+  document.querySelectorAll(".expand-summary").forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".expand-card");
+      const entry = button.closest(".timeline-entry");
+      const opened = card.classList.toggle("open");
+      const icon = button.querySelector(".accordion-icon");
 
-      if (icon) icon.textContent = open ? "−" : "+";
+      if (entry) {
+        entry.classList.toggle("open", opened);
+      }
+
+      if (icon) {
+        icon.textContent = opened ? "−" : "+";
+      }
 
       updateTimelineProgress();
-    };
+    });
   });
 
   updateTimelineProgress();
@@ -54,19 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
 function updateTimelineProgress() {
   document.querySelectorAll(".timeline-modern").forEach(timeline => {
     const rect = timeline.getBoundingClientRect();
-    const viewportHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
     const start = viewportHeight * 0.70;
     const end = viewportHeight * 0.30;
 
     let progress = (start - rect.top) / (rect.height - (start - end));
     progress = Math.max(0, Math.min(1, progress));
 
-    timeline.style.setProperty(
-      "--timeline-progress",
-      `${(progress * 100).toFixed(2)}%`
-    );
+    timeline.style.setProperty("--timeline-progress", `${(progress * 100).toFixed(2)}%`);
 
     let bestEntry = null;
     let bestDistance = Infinity;
@@ -91,7 +98,5 @@ function updateTimelineProgress() {
   });
 }
 
-window.addEventListener("scroll", updateTimelineProgress, {
-  passive: true
-});
+window.addEventListener("scroll", updateTimelineProgress, { passive: true });
 window.addEventListener("resize", updateTimelineProgress);
