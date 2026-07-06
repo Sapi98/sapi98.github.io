@@ -1838,6 +1838,26 @@ body[data-theme="dark"] .person-links a:hover {
   }
 }
 
+.person-photo-wrap {
+  width: 92px;
+  height: 92px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(
+    135deg,
+    var(--surface-2),
+    var(--surface)
+  );
+}
+
+.person-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .person-placeholder {
   display: grid;
   place-items: center;
@@ -1845,19 +1865,66 @@ body[data-theme="dark"] .person-links a:hover {
   color: #fffaf0;
   font-size: 1.4rem;
   font-weight: 900;
+}
 
+.person-card:hover .person-placeholder {
+  background: rgba(255,250,240,.95);
+  color: #47423c;
+  transform: scale(1.08);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+
+/* People-page links */
+
+.person-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  font-size: .84rem;
+  font-weight: 800;
+  text-decoration: none;
   transition:
     background-color .45s ease,
     color .45s ease,
+    border-color .45s ease,
     transform .35s ease,
     box-shadow .35s ease;
 }
 
-.person-card:hover .person-placeholder {
+.person-links a:hover {
   background: #fffaf0;
   color: #47423c;
+  border-color: #fffaf0;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
+.person-link-icon {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-2);
+  font-size: .74rem;
+  font-weight: 900;
+  transition:
+    background-color .45s ease,
+    color .45s ease,
+    transform .35s ease;
+}
+
+.person-links a:hover .person-link-icon {
+  background: #47423c;
+  color: #fffaf0;
   transform: scale(1.08);
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
 }
 
 /* =========================
@@ -1869,18 +1936,9 @@ body[data-theme="dark"] .person-links a:hover {
   align-items: center;
   gap: 8px;
 
-  min-height: 36px;
-  padding: 8px 12px;
-
-  border-radius: 999px;
-
-  background: #47423c;
-  color: #fffaf0;
-  border: 1px solid #47423c;
-
-  text-decoration: none;
-  font-size: .84rem;
-  font-weight: 800;
+  background: #47423c !important;
+  color: #fffaf0 !important;
+  border: 1px solid #47423c !important;
 
   transition:
     background-color .45s ease,
@@ -1889,6 +1947,15 @@ body[data-theme="dark"] .person-links a:hover {
     transform .35s ease,
     box-shadow .35s ease;
 }
+
+/* Individual button hover animation */
+
+.person-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(52,49,45,.18);
+}
+
+/* Icon styling */
 
 .person-link-icon {
   width: 22px;
@@ -1900,11 +1967,8 @@ body[data-theme="dark"] .person-links a:hover {
 
   border-radius: 50%;
 
-  background: #fffaf0;
-  color: #47423c;
-
-  font-size: .74rem;
-  font-weight: 900;
+  background: #fffaf0 !important;
+  color: #47423c !important;
 
   transition:
     background-color .45s ease,
@@ -1912,22 +1976,26 @@ body[data-theme="dark"] .person-links a:hover {
     transform .35s ease;
 }
 
+/* Card hover = invert colors */
+
 .person-card:hover .person-links a {
-  background: #fffaf0;
-  color: #47423c;
-  border-color: #fffaf0;
+  background: #fffaf0 !important;
+  color: #47423c !important;
+  border-color: #fffaf0 !important;
 }
 
 .person-card:hover .person-link-icon {
-  background: #47423c;
-  color: #fffaf0;
+  background: #47423c !important;
+  color: #fffaf0 !important;
 }
 
-.person-links a:hover {
+/* Button hover while card is already hovered */
+
+.person-card:hover .person-links a:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(52,49,45,.18);
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
 }
 
-.person-links a:hover .person-link-icon {
+.person-card:hover .person-links a:hover .person-link-icon {
   transform: scale(1.08);
 }
