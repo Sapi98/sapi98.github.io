@@ -2061,3 +2061,7 @@ body[data-theme="dark"] .person-links a:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+.hero.section {
+  padding-top: 12px;
+}
