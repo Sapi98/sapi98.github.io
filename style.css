@@ -2001,3 +2001,14 @@ body[data-theme="dark"] .person-links a:hover {
     opacity: 0;
   }
 }
+
+
+.page-title .eyebrow {
+  font-size: .72rem;
+  letter-spacing: .14em;
+}
+
+.page-title h1 {
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  line-height: 1.05;
+}
