@@ -387,7 +387,7 @@ const publications = [
     "venue": "TechRxiv preprint, 2023",
     "link": "https://doi.org/10.36227/techrxiv.21980120.v1",
     "bibtex": `@article{Biswas2023RelativeLearningRateAdaptation,
-  author = {SAPTARSHI BISWAS and SUMAGNA DEY},
+  author = {Saptarshi Biswas and Sumagna Dey},
   title = {Relative Learning Rate Adaptation on Loss Feedback},
   journal = {TechRxiv},
   volume = {2023},
