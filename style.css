@@ -2518,7 +2518,9 @@ body[data-theme="dark"] .expertise-pills span:hover {
   border-color: #e4c28a !important;
 }
 
-/* Technical Expertise tiles */
+/* =========================
+   TECHNICAL EXPERTISE TILES
+   ========================= */
 
 .expertise-tile {
   display: flex;
@@ -2564,7 +2566,7 @@ body[data-theme="dark"] .expertise-pills span:hover {
   gap: 8px;
 }
 
-.expertise-pills > span {
+.skill-pill {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -2603,9 +2605,11 @@ body[data-theme="dark"] .expertise-pills span:hover {
   background: #47423c;
   color: #fffaf0;
 
-  font-size: .62rem;
+  font-size: .58rem;
   font-weight: 900;
   line-height: 1;
+
+  overflow: hidden;
 
   transition:
     background-color .45s ease,
@@ -2613,19 +2617,27 @@ body[data-theme="dark"] .expertise-pills span:hover {
     transform .35s ease;
 }
 
+.skill-icon img {
+  width: 15px;
+  height: 15px;
+  display: block;
+  object-fit: contain;
+}
+
+.skill-fallback {
+  display: none;
+}
+
 /* Tile hover */
 
 .expertise-tile:hover .expertise-icon {
   background: #fffaf0;
   color: #47423c;
-
   transform: scale(1.08);
-
-  box-shadow:
-    0 8px 18px rgba(0, 0, 0, .16);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .16);
 }
 
-.expertise-tile:hover .expertise-pills > span {
+.expertise-tile:hover .skill-pill {
   background: rgba(255, 250, 240, .16);
   color: #fffaf0;
   border-color: rgba(255, 250, 240, .28);
@@ -2636,29 +2648,25 @@ body[data-theme="dark"] .expertise-pills span:hover {
   color: #47423c;
 }
 
-/* Individual skill pill hover */
+/* Individual pill hover */
 
-.expertise-pills > span:hover {
+.skill-pill:hover {
   background: #d6b27f !important;
   color: #242321 !important;
   border-color: #d6b27f !important;
-
   transform: translateY(-2px);
-
-  box-shadow:
-    0 8px 18px rgba(0, 0, 0, .18);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
 }
 
-.expertise-pills > span:hover .skill-icon {
+.skill-pill:hover .skill-icon {
   background: #242321 !important;
   color: #fffaf0 !important;
-
   transform: scale(1.08);
 }
 
 /* Dark mode */
 
-body[data-theme="dark"] .expertise-pills > span {
+body[data-theme="dark"] .skill-pill {
   background: var(--surface-2);
   color: var(--text);
   border-color: var(--line);
@@ -2669,7 +2677,7 @@ body[data-theme="dark"] .skill-icon {
   color: #242321;
 }
 
-body[data-theme="dark"] .expertise-tile:hover .expertise-pills > span {
+body[data-theme="dark"] .expertise-tile:hover .skill-pill {
   background: rgba(255, 250, 240, .14);
   color: #fffaf0;
   border-color: rgba(255, 250, 240, .24);
@@ -2680,13 +2688,13 @@ body[data-theme="dark"] .expertise-tile:hover .skill-icon {
   color: #fffaf0;
 }
 
-body[data-theme="dark"] .expertise-pills > span:hover {
+body[data-theme="dark"] .skill-pill:hover {
   background: #e4c28a !important;
   color: #242321 !important;
   border-color: #e4c28a !important;
 }
 
-body[data-theme="dark"] .expertise-pills > span:hover .skill-icon {
+body[data-theme="dark"] .skill-pill:hover .skill-icon {
   background: #242321 !important;
   color: #fffaf0 !important;
 }
