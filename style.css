@@ -2542,17 +2542,12 @@ body[data-theme="dark"] .expertise-pills span:hover {
   width: 40px;
   height: 40px;
   min-width: 40px;
-
   display: inline-grid;
   place-items: center;
-
   border-radius: 14px;
-
   background: #47423c;
   color: #fffaf0;
-
   font-size: 1.08rem;
-
   transition:
     background-color .45s ease,
     color .45s ease,
@@ -2570,20 +2565,15 @@ body[data-theme="dark"] .expertise-pills span:hover {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-
   min-height: 34px;
   padding: 7px 11px;
-
   border-radius: 999px;
   border: 1px solid var(--line);
-
   background: var(--surface);
   color: var(--text);
-
   font-size: .78rem;
   font-weight: 800;
   line-height: 1;
-
   transition:
     background-color .45s ease,
     color .45s ease,
@@ -2593,39 +2583,44 @@ body[data-theme="dark"] .expertise-pills span:hover {
 }
 
 .skill-icon {
-  width: 22px;
-  height: 22px;
-  min-width: 22px;
-
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
   display: inline-grid;
   place-items: center;
-
   border-radius: 50%;
-
-  background: #47423c;
-  color: #fffaf0;
-
-  font-size: .58rem;
-  font-weight: 900;
-  line-height: 1;
-
+  background: #fffaf0;
   overflow: hidden;
-
   transition:
     background-color .45s ease,
-    color .45s ease,
     transform .35s ease;
 }
 
 .skill-icon img {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   display: block;
   object-fit: contain;
 }
 
 .skill-fallback {
   display: none;
+  font-size: .56rem;
+  font-weight: 900;
+  color: #47423c;
+}
+
+.skill-icon.is-text {
+  background: #47423c;
+  color: #fffaf0;
+  font-size: .58rem;
+  font-weight: 900;
+}
+
+.skill-icon.is-text .skill-fallback {
+  display: inline-grid;
+  place-items: center;
+  color: inherit;
 }
 
 /* Tile hover */
@@ -2645,7 +2640,6 @@ body[data-theme="dark"] .expertise-pills span:hover {
 
 .expertise-tile:hover .skill-icon {
   background: #fffaf0;
-  color: #47423c;
 }
 
 /* Individual pill hover */
@@ -2660,8 +2654,11 @@ body[data-theme="dark"] .expertise-pills span:hover {
 
 .skill-pill:hover .skill-icon {
   background: #242321 !important;
-  color: #fffaf0 !important;
   transform: scale(1.08);
+}
+
+.skill-pill:hover .skill-fallback {
+  color: #fffaf0;
 }
 
 /* Dark mode */
@@ -2673,6 +2670,10 @@ body[data-theme="dark"] .skill-pill {
 }
 
 body[data-theme="dark"] .skill-icon {
+  background: #fffaf0;
+}
+
+body[data-theme="dark"] .skill-icon.is-text {
   background: #e4c28a;
   color: #242321;
 }
@@ -2683,11 +2684,6 @@ body[data-theme="dark"] .expertise-tile:hover .skill-pill {
   border-color: rgba(255, 250, 240, .24);
 }
 
-body[data-theme="dark"] .expertise-tile:hover .skill-icon {
-  background: #242321;
-  color: #fffaf0;
-}
-
 body[data-theme="dark"] .skill-pill:hover {
   background: #e4c28a !important;
   color: #242321 !important;
@@ -2696,5 +2692,8 @@ body[data-theme="dark"] .skill-pill:hover {
 
 body[data-theme="dark"] .skill-pill:hover .skill-icon {
   background: #242321 !important;
-  color: #fffaf0 !important;
+}
+
+body[data-theme="dark"] .skill-pill:hover .skill-fallback {
+  color: #fffaf0;
 }
