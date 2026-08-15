@@ -33,6 +33,43 @@ const publications = [
   //   "bibtex": "@article{biswasmagnoclusterphysicsinfor2026,\n  title={MagnoCluster: Physics-Informed Unsupervised Learning Framework for Material Classification},\n  author={S. Biswas, A. Biswas, Y. Mudryk, P. Singh},\n  year={2026}\n}"
   // },
 
+    {
+      "type": "preprint",
+      "typeLabel": "Preprints",
+      "year": 2026,
+      "title": "RevCRN: Reversible Analog Computation using Chemical Reaction Networks",
+      "authors": "S. Biswas, J. I. Lathrop, R. D. Parshad",
+      "venue": "arXiv preprint, 2026",
+      "link": "https://arxiv.org/abs/2608.11362",
+      "bibtex": `@misc{biswas2026revcrnreversibleanalogcomputation,
+      title={RevCRN: Reversible Analog Computation using Chemical Reaction Networks},
+      author={Saptarshi Biswas and James I. Lathrop and Rana D. Parshad},
+      year={2026},
+      eprint={2608.11362},
+      archivePrefix={arXiv},
+      primaryClass={cs.CC},
+      url={https://arxiv.org/abs/2608.11362}
+    }`
+  },
+  {
+      "type": "preprint",
+      "typeLabel": "Preprints",
+      "year": 2025,
+      "title": "Interpretable machine learning-guided design of Fe-based soft magnetic alloys",
+      "authors": "A. Nachnani, K. Li-Caldwell, S. Biswas, P. Sharma, G. Ouyang, P. Singh",
+      "venue": "arXiv preprint (later published in Physical Review Materials), 2025",
+      "link": "https://arxiv.org/abs/2504.19787",
+      "bibtex": `@misc{nachnani2025interpretablemachinelearningguideddesign,
+      title={Interpretable machine learning-guided design of Fe-based soft magnetic alloys},
+      author={Aditi Nachnani and Kai K. Li-Caldwell and Saptarshi Biswas and Prince Sharma and Gaoyuan Ouyang and Prashant Singh},
+      year={2025},
+      eprint={2504.19787},
+      archivePrefix={arXiv},
+      primaryClass={cond-mat.mtrl-sci},
+      url={https://arxiv.org/abs/2504.19787}
+    }`
+  },
+
   {
     "type": "journal",
     "typeLabel": "Journal Papers",
