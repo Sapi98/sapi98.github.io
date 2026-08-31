@@ -325,13 +325,21 @@ async function updateHomepageStats() {
     return;
   }
 
-  // Count publication entries from publications.js.
+  // Count unique publication titles from publications.js.
   if (
     worksElement &&
     Array.isArray(window.publications)
   ) {
+    const uniqueTitles = new Set(
+      window.publications.map(publication =>
+        publication.title
+          .trim()
+          .toLocaleLowerCase()
+      )
+    );
+
     worksElement.textContent =
-      window.publications.length.toLocaleString();
+      uniqueTitles.size.toLocaleString();
   }
 
   // Load citations and h-index from the generated JSON file.
