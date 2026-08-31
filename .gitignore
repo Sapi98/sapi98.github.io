@@ -13,3 +13,6 @@
 # Documents
 *.docx
 *.doc
+
+# APIs
+*_KEY

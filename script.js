@@ -305,3 +305,77 @@ window.addEventListener("scroll", updateScrollProgressBar, {
 window.addEventListener("resize", updateScrollProgressBar);
 
 document.addEventListener("DOMContentLoaded", updateScrollProgressBar);
+
+async function updateHomepageStats() {
+  const citationElement =
+    document.getElementById("citationCount");
+
+  const hIndexElement =
+    document.getElementById("hIndex");
+
+  const worksElement =
+    document.getElementById("worksCount");
+
+  // Run only when at least one statistics element exists.
+  if (
+    !citationElement &&
+    !hIndexElement &&
+    !worksElement
+  ) {
+    return;
+  }
+
+  // Count publication entries from publications.js.
+  if (
+    worksElement &&
+    Array.isArray(window.publications)
+  ) {
+    worksElement.textContent =
+      window.publications.length.toLocaleString();
+  }
+
+  // Load citations and h-index from the generated JSON file.
+  try {
+    const response = await fetch(
+      `scholar-stats.json?version=${Date.now()}`,
+      {
+        cache: "no-store"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Statistics request failed: ${response.status}`
+      );
+    }
+
+    const stats = await response.json();
+
+    if (
+      citationElement &&
+      Number.isFinite(stats.citations)
+    ) {
+      citationElement.textContent =
+        stats.citations.toLocaleString();
+    }
+
+    if (
+      hIndexElement &&
+      Number.isFinite(stats.hIndex)
+    ) {
+      hIndexElement.textContent =
+        stats.hIndex.toLocaleString();
+    }
+  } catch (error) {
+    // Preserve the fallback values in index.html.
+    console.warn(
+      "Could not update Google Scholar statistics:",
+      error
+    );
+  }
+}
+
+document.addEventListener(
+  "DOMContentLoaded",
+  updateHomepageStats
+);
