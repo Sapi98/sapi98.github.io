@@ -457,9 +457,9 @@ function renderAllSummary() {
     <section class="pub-total-block">
       <div>
         <p class="eyebrow">All categories</p>
-        <h3>All Publications</h3>
+        <h3>Peer Reviewed Publications, Preprints, and Theses</h3>
       </div>
-      <span>${publications.length} total publications</span>
+      <span>${publications.length} total works</span>
     </section>
   `;
 }
