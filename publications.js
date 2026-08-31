@@ -544,3 +544,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPublications();
   setupPublicationFilters();
 });
+
+window.publications = publications;

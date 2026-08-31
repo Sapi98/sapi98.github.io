@@ -63,33 +63,133 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTimelineProgress();
 });
 
+// function updateTimelineProgress() {
+//   document.querySelectorAll(".timeline-modern").forEach(timeline => {
+//     const rect = timeline.getBoundingClientRect();
+//     const viewportHeight =
+//       window.innerHeight || document.documentElement.clientHeight;
+
+//     /*
+//       The progress line now follows a fixed visual point on the screen.
+//       This makes the timeline movement feel synced with scrolling instead
+//       of advancing too quickly.
+//     */
+//     const screenMarkerY = viewportHeight * 0.50;
+
+//     const lineTopOffset = 10;
+//     const lineBottomOffset = 10;
+//     const lineMaxHeight =
+//       timeline.offsetHeight - lineTopOffset - lineBottomOffset;
+
+//     /*
+//       Convert the screen marker into a position inside the timeline.
+//       If the marker is above the timeline, progress is 0.
+//       If the marker is below the timeline, progress is 100%.
+//     */
+//     let lineEndY = screenMarkerY - rect.top - lineTopOffset;
+//     lineEndY = Math.max(0, Math.min(lineMaxHeight, lineEndY));
+
+//     const progress = lineMaxHeight > 0 ? lineEndY / lineMaxHeight : 0;
+
+//     timeline.style.setProperty(
+//       "--timeline-progress",
+//       `${(progress * 100).toFixed(2)}%`
+//     );
+
+//     /*
+//       Highlight the most recent bullet that the progress line has reached.
+//       Scrolling down: bullet activates when the line passes it.
+//       Scrolling up: bullet deactivates when the line rolls back above it.
+//     */
+//     let activeEntry = null;
+
+//     timeline.querySelectorAll(".timeline-entry").forEach(entry => {
+//       const node = entry.querySelector(".timeline-node");
+
+//       if (!node) return;
+
+//       const nodeRect = node.getBoundingClientRect();
+//       const nodeCenterY =
+//         nodeRect.top - rect.top + nodeRect.height / 2 - lineTopOffset;
+
+//       if (lineEndY >= nodeCenterY) {
+//         activeEntry = entry;
+//       }
+//     });
+
+//     timeline.querySelectorAll(".timeline-entry").forEach(entry => {
+//       entry.classList.toggle("is-active", entry === activeEntry);
+//     });
+//   });
+// }
+
 function updateTimelineProgress() {
+  const scrollY =
+    window.scrollY || document.documentElement.scrollTop;
+
+  const viewportHeight =
+    window.innerHeight || document.documentElement.clientHeight;
+
+  const documentHeight =
+    document.documentElement.scrollHeight;
+
+  const maxScroll = Math.max(0, documentHeight - viewportHeight);
+
   document.querySelectorAll(".timeline-modern").forEach(timeline => {
     const rect = timeline.getBoundingClientRect();
-    const viewportHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-
-    /*
-      The progress line now follows a fixed visual point on the screen.
-      This makes the timeline movement feel synced with scrolling instead
-      of advancing too quickly.
-    */
-    const screenMarkerY = viewportHeight * 0.50;
 
     const lineTopOffset = 10;
     const lineBottomOffset = 10;
-    const lineMaxHeight =
-      timeline.offsetHeight - lineTopOffset - lineBottomOffset;
+
+    const lineMaxHeight = Math.max(
+      0,
+      timeline.offsetHeight - lineTopOffset - lineBottomOffset
+    );
 
     /*
-      Convert the screen marker into a position inside the timeline.
-      If the marker is above the timeline, progress is 0.
-      If the marker is below the timeline, progress is 100%.
+      Convert the timeline's current viewport position into its
+      absolute document position.
     */
-    let lineEndY = screenMarkerY - rect.top - lineTopOffset;
-    lineEndY = Math.max(0, Math.min(lineMaxHeight, lineEndY));
+    const timelineTop =
+      rect.top + scrollY + lineTopOffset;
 
-    const progress = lineMaxHeight > 0 ? lineEndY / lineMaxHeight : 0;
+    const timelineBottom =
+      timelineTop + lineMaxHeight;
+
+    /*
+      Normally, animation begins when the top of the timeline reaches
+      the middle of the viewport and ends when its bottom reaches the
+      middle of the viewport.
+    */
+    const screenMarkerOffset = viewportHeight * 0.5;
+
+    let startScroll = timelineTop - screenMarkerOffset;
+    let endScroll = timelineBottom - screenMarkerOffset;
+
+    /*
+      On large screens, the page may end before the timeline bottom
+      reaches the viewport midpoint. Limit endScroll to the maximum
+      available scroll position so the line can still reach 100%.
+    */
+    startScroll = Math.max(0, Math.min(startScroll, maxScroll));
+    endScroll = Math.max(startScroll, Math.min(endScroll, maxScroll));
+
+    let progress;
+
+    if (endScroll <= startScroll) {
+      /*
+        This handles pages whose content is shorter than or nearly
+        equal to the viewport height.
+      */
+      progress = scrollY >= endScroll ? 1 : 0;
+    } else {
+      progress =
+        (scrollY - startScroll) / (endScroll - startScroll);
+    }
+
+    progress = Math.max(0, Math.min(1, progress));
+
+    const lineEndY = progress * lineMaxHeight;
 
     timeline.style.setProperty(
       "--timeline-progress",
@@ -97,9 +197,7 @@ function updateTimelineProgress() {
     );
 
     /*
-      Highlight the most recent bullet that the progress line has reached.
-      Scrolling down: bullet activates when the line passes it.
-      Scrolling up: bullet deactivates when the line rolls back above it.
+      Highlight the latest timeline node reached by the progress line.
     */
     let activeEntry = null;
 
@@ -109,8 +207,12 @@ function updateTimelineProgress() {
       if (!node) return;
 
       const nodeRect = node.getBoundingClientRect();
+
       const nodeCenterY =
-        nodeRect.top - rect.top + nodeRect.height / 2 - lineTopOffset;
+        nodeRect.top -
+        rect.top +
+        nodeRect.height / 2 -
+        lineTopOffset;
 
       if (lineEndY >= nodeCenterY) {
         activeEntry = entry;
@@ -118,7 +220,10 @@ function updateTimelineProgress() {
     });
 
     timeline.querySelectorAll(".timeline-entry").forEach(entry => {
-      entry.classList.toggle("is-active", entry === activeEntry);
+      entry.classList.toggle(
+        "is-active",
+        entry === activeEntry
+      );
     });
   });
 }
@@ -200,3 +305,85 @@ window.addEventListener("scroll", updateScrollProgressBar, {
 window.addEventListener("resize", updateScrollProgressBar);
 
 document.addEventListener("DOMContentLoaded", updateScrollProgressBar);
+
+async function updateHomepageStats() {
+  const citationElement =
+    document.getElementById("citationCount");
+
+  const hIndexElement =
+    document.getElementById("hIndex");
+
+  const worksElement =
+    document.getElementById("worksCount");
+
+  // Run only when at least one statistics element exists.
+  if (
+    !citationElement &&
+    !hIndexElement &&
+    !worksElement
+  ) {
+    return;
+  }
+
+  // Count unique publication titles from publications.js.
+  if (
+    worksElement &&
+    Array.isArray(window.publications)
+  ) {
+    const uniqueTitles = new Set(
+      window.publications.map(publication =>
+        publication.title
+          .trim()
+          .toLocaleLowerCase()
+      )
+    );
+
+    worksElement.textContent =
+      uniqueTitles.size.toLocaleString();
+  }
+
+  // Load citations and h-index from the generated JSON file.
+  try {
+    const response = await fetch(
+      `scholar-stats.json?version=${Date.now()}`,
+      {
+        cache: "no-store"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Statistics request failed: ${response.status}`
+      );
+    }
+
+    const stats = await response.json();
+
+    if (
+      citationElement &&
+      Number.isFinite(stats.citations)
+    ) {
+      citationElement.textContent =
+        stats.citations.toLocaleString();
+    }
+
+    if (
+      hIndexElement &&
+      Number.isFinite(stats.hIndex)
+    ) {
+      hIndexElement.textContent =
+        stats.hIndex.toLocaleString();
+    }
+  } catch (error) {
+    // Preserve the fallback values in index.html.
+    console.warn(
+      "Could not update Google Scholar statistics:",
+      error
+    );
+  }
+}
+
+document.addEventListener(
+  "DOMContentLoaded",
+  updateHomepageStats
+);
