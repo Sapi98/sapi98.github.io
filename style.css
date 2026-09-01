@@ -10,7 +10,7 @@
   --cream: #fffaf0;
   --shadow: 0 18px 50px rgba(52, 49, 45, .10);
   --radius: 22px;
-  --max: 1120px;
+  --max: min(1440px, calc(100vw - 48px));
   --accent: #b98a52;
   --name-accent: #b98a52;
   --tagline-accent: #8c6a3d;
@@ -33,7 +33,9 @@ body[data-theme="dark"] {
 
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -149,9 +151,14 @@ body[data-theme="dark"] .site-header {
 .hero {
   min-height: 72vh;
   display: grid;
-  grid-template-columns: 1.45fr .9fr;
-  gap: 30px;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 410px);
+  gap: clamp(30px, 4vw, 64px);
   align-items: center;
+}
+
+.hero-content {
+  min-width: 0;
+  max-width: 900px;
 }
 
 .eyebrow {
