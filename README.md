@@ -46,7 +46,7 @@ Sapi98.github.io/
 │   ├── Project File Final Submission.docx
 │   └── profile.jpg
 └── scripts/
-    └── update-Scholar-stats.mjs
+    └── update-scholar-stats.mjs
 ```
 
 ---
