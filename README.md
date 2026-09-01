@@ -31,14 +31,22 @@ Sapi98.github.io/
 ├── robots.txt
 ├── sitemap.xml
 ├── README.md
-├── profile.jpg
-├── CV.pdf
-├── S24 Associates Biswas.pdf
-├── Saptarshi Biswas Associate.pdf
-└── people/
-    ├── collaborator-or-mentor-photo-1.jpg
-    ├── collaborator-or-mentor-photo-2.jpg
-    └── additional-people-images.jpg
+├── scholar-stats.json
+├── google8d878afc81694dcc.html
+├── favicon.ico, favicon.svg, favicon-*.png (Website favicon files)
+├── Designer.png, Designer-*.png (Designer images)
+├── icons/
+│   └── Icon and skill images (SVG, PNG)
+├── Documents/
+│   ├── CV.pdf
+│   ├── Short_CV.pdf
+│   ├── S24 Associates Biswas.pdf
+│   ├── Saptarshi Biswas Associate.pdf
+│   ├── BTech_project_report.pdf
+│   ├── Project File Final Submission.docx
+│   └── profile.jpg
+└── scripts/
+    └── update-scholar-stats.mjs
 ```
 
 ---
@@ -69,24 +77,85 @@ The `people.html` page is currently under development and may be hidden from the
 ## Main Assets
 
 ```text
-profile.jpg       Profile image used on the homepage
-CV.pdf            Academic CV linked from the website
-style.css         Main stylesheet
-script.js         Main JavaScript file
-publications.js   Publication data, filtering, and BibTeX rendering
-robots.txt        Search engine crawler instructions
-sitemap.xml       Search engine sitemap
+style.css                Main stylesheet
+script.js                Main JavaScript file
+publications.js          Publication data, filtering, and BibTeX rendering
+robots.txt               Search engine crawler instructions
+sitemap.xml              Search engine sitemap
+scholar-stats.json       Scholar statistics data
+google8d878afc81694dcc.html  Google site verification
+favicon.ico, favicon.svg, favicon-*.png  Website favicon files in multiple formats
+Designer.png, Designer-*.png  Designer images for branding
 ```
 
 ---
 
 ## Certificate and Credential Files
 
-Some education and credential entries link to local PDF certificate files.
+Certificates, credentials, and project reports are stored in the `Documents/` folder. Some education and credential entries link to these PDF and document files.
 
 ```text
-S24 Associates Biswas.pdf
-Saptarshi Biswas Associate.pdf
+Documents/CV.pdf
+Documents/Short_CV.pdf
+Documents/S24 Associates Biswas.pdf
+Documents/Saptarshi Biswas Associate.pdf
+Documents/BTech_project_report.pdf
+Documents/Project File Final Submission.docx
+Documents/profile.jpg
+```
+
+---
+
+## Folders
+
+### icons/
+
+Contains SVG and PNG icon files used for displaying skills, tools, and technologies throughout the website:
+
+```text
+ChatGPT-Logo.svg
+GRASS_GIS_icon.svg
+MATLAB.svg
+Matplotlib.svg
+SAGA_GIS_logo.png
+claude-ai-icon.webp
+codex-icon.webp
+copilot-icon.webp
+database-management.png
+design-patterns.png
+digitalelevationmodel.png
+digitalterrainanalysis.png
+gradescope.png
+moffice.png
+oop.png
+rasterio.png
+remotesensing.svg
+shap.png
+shapely.png
+softwarearchitechture.png
+xgboost.svg
+```
+
+### Documents/
+
+Contains certificates, credentials, project reports, and the profile image:
+
+```text
+CV.pdf                              Academic CV linked from the website
+Short_CV.pdf                        Abbreviated curriculum vitae
+S24 Associates Biswas.pdf           Professional credential
+Saptarshi Biswas Associate.pdf      Professional credential
+BTech_project_report.pdf            Bachelor's thesis project report
+Project File Final Submission.docx  Project submission document
+profile.jpg                         Profile image used on the homepage
+```
+
+### scripts/
+
+Contains utility scripts for website maintenance and data updates:
+
+```text
+update-scholar-stats.mjs    Automated script to update scholar statistics
 ```
 
 ---
