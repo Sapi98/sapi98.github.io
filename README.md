@@ -33,17 +33,20 @@ Sapi98.github.io/
 ├── README.md
 ├── scholar-stats.json
 ├── google8d878afc81694dcc.html
-├── CV.pdf
-├── Short_CV.pdf
-├── S24 Associates Biswas.pdf
-├── Saptarshi Biswas Associate.pdf
-├── BTech_project_report.pdf
-├── Project File Final Submission.docx
-├── Website icon files (PNG, JPG, ICO, SVG)
+├── favicon.ico, favicon.svg, favicon-*.png (Website favicon files)
+├── Designer.png, Designer-*.png (Designer images)
 ├── icons/
 │   └── Icon and skill images (SVG, PNG)
+├── Documents/
+│   ├── CV.pdf
+│   ├── Short_CV.pdf
+│   ├── S24 Associates Biswas.pdf
+│   ├── Saptarshi Biswas Associate.pdf
+│   ├── BTech_project_report.pdf
+│   ├── Project File Final Submission.docx
+│   └── profile.jpg
 └── scripts/
-    └── update-scholar-stats.mjs
+    └── update-Scholar-stats.mjs
 ```
 
 ---
@@ -74,9 +77,6 @@ The `people.html` page is currently under development and may be hidden from the
 ## Main Assets
 
 ```text
-profile.jpg              Profile image used on the homepage
-CV.pdf                   Academic CV linked from the website
-Short_CV.pdf             Abbreviated curriculum vitae
 style.css                Main stylesheet
 script.js                Main JavaScript file
 publications.js          Publication data, filtering, and BibTeX rendering
@@ -84,21 +84,24 @@ robots.txt               Search engine crawler instructions
 sitemap.xml              Search engine sitemap
 scholar-stats.json       Scholar statistics data
 google8d878afc81694dcc.html  Google site verification
+favicon.ico, favicon.svg, favicon-*.png  Website favicon files in multiple formats
+Designer.png, Designer-*.png  Designer images for branding
 ```
 
 ---
 
 ## Certificate and Credential Files
 
-Some education and credential entries link to local PDF and document files.
+Certificates, credentials, and project reports are stored in the `Documents/` folder. Some education and credential entries link to these PDF and document files.
 
 ```text
-CV.pdf
-Short_CV.pdf
-S24 Associates Biswas.pdf
-Saptarshi Biswas Associate.pdf
-BTech_project_report.pdf
-Project File Final Submission.docx
+Documents/CV.pdf
+Documents/Short_CV.pdf
+Documents/S24 Associates Biswas.pdf
+Documents/Saptarshi Biswas Associate.pdf
+Documents/BTech_project_report.pdf
+Documents/Project File Final Submission.docx
+Documents/profile.jpg
 ```
 
 ---
@@ -131,6 +134,20 @@ shap.png
 shapely.png
 softwarearchitechture.png
 xgboost.svg
+```
+
+### Documents/
+
+Contains certificates, credentials, project reports, and the profile image:
+
+```text
+CV.pdf                              Academic CV linked from the website
+Short_CV.pdf                        Abbreviated curriculum vitae
+S24 Associates Biswas.pdf           Professional credential
+Saptarshi Biswas Associate.pdf      Professional credential
+BTech_project_report.pdf            Bachelor's thesis project report
+Project File Final Submission.docx  Project submission document
+profile.jpg                         Profile image used on the homepage
 ```
 
 ### scripts/
