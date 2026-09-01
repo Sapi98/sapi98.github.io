@@ -31,14 +31,19 @@ Sapi98.github.io/
 ├── robots.txt
 ├── sitemap.xml
 ├── README.md
-├── profile.jpg
+├── scholar-stats.json
+├── google8d878afc81694dcc.html
 ├── CV.pdf
+├── Short_CV.pdf
 ├── S24 Associates Biswas.pdf
 ├── Saptarshi Biswas Associate.pdf
-└── people/
-    ├── collaborator-or-mentor-photo-1.jpg
-    ├── collaborator-or-mentor-photo-2.jpg
-    └── additional-people-images.jpg
+├── BTech_project_report.pdf
+├── Project File Final Submission.docx
+├── Website icon files (PNG, JPG, ICO, SVG)
+├── icons/
+│   └── Icon and skill images (SVG, PNG)
+└── scripts/
+    └── update-scholar-stats.mjs
 ```
 
 ---
@@ -69,24 +74,71 @@ The `people.html` page is currently under development and may be hidden from the
 ## Main Assets
 
 ```text
-profile.jpg       Profile image used on the homepage
-CV.pdf            Academic CV linked from the website
-style.css         Main stylesheet
-script.js         Main JavaScript file
-publications.js   Publication data, filtering, and BibTeX rendering
-robots.txt        Search engine crawler instructions
-sitemap.xml       Search engine sitemap
+profile.jpg              Profile image used on the homepage
+CV.pdf                   Academic CV linked from the website
+Short_CV.pdf             Abbreviated curriculum vitae
+style.css                Main stylesheet
+script.js                Main JavaScript file
+publications.js          Publication data, filtering, and BibTeX rendering
+robots.txt               Search engine crawler instructions
+sitemap.xml              Search engine sitemap
+scholar-stats.json       Scholar statistics data
+google8d878afc81694dcc.html  Google site verification
 ```
 
 ---
 
 ## Certificate and Credential Files
 
-Some education and credential entries link to local PDF certificate files.
+Some education and credential entries link to local PDF and document files.
 
 ```text
+CV.pdf
+Short_CV.pdf
 S24 Associates Biswas.pdf
 Saptarshi Biswas Associate.pdf
+BTech_project_report.pdf
+Project File Final Submission.docx
+```
+
+---
+
+## Folders
+
+### icons/
+
+Contains SVG and PNG icon files used for displaying skills, tools, and technologies throughout the website:
+
+```text
+ChatGPT-Logo.svg
+GRASS_GIS_icon.svg
+MATLAB.svg
+Matplotlib.svg
+SAGA_GIS_logo.png
+claude-ai-icon.webp
+codex-icon.webp
+copilot-icon.webp
+database-management.png
+design-patterns.png
+digitalelevationmodel.png
+digitalterrainanalysis.png
+gradescope.png
+moffice.png
+oop.png
+rasterio.png
+remotesensing.svg
+shap.png
+shapely.png
+softwarearchitechture.png
+xgboost.svg
+```
+
+### scripts/
+
+Contains utility scripts for website maintenance and data updates:
+
+```text
+update-scholar-stats.mjs    Automated script to update scholar statistics
 ```
 
 ---
