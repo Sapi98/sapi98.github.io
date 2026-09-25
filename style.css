@@ -10,7 +10,7 @@
   --cream: #fffaf0;
   --shadow: 0 18px 50px rgba(52, 49, 45, .10);
   --radius: 22px;
-  --max: min(calc(100vw - 48px), clamp(1120px, 90vw, 1440px));
+  --max: min(1440px, calc(100vw - 48px));
   --accent: #b98a52;
   --name-accent: #b98a52;
   --tagline-accent: #8c6a3d;
@@ -1054,6 +1054,13 @@ body[data-theme="dark"] .credential-card {
 
 body[data-theme="dark"] .credential-card:hover {
   background: #4b453e;
+}
+
+/* Keep laptop layouts comfortably inset without changing large displays. */
+@media (min-width: 901px) and (max-width: 1500px) {
+  :root {
+    --max: 85vw;
+  }
 }
 
 @media (max-width: 980px) {
