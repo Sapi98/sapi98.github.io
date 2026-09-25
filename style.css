@@ -10,7 +10,7 @@
   --cream: #fffaf0;
   --shadow: 0 18px 50px rgba(52, 49, 45, .10);
   --radius: 22px;
-  --max: min(1440px, calc(100vw - 48px));
+  --max: min(calc(100vw - 48px), clamp(1120px, 90vw, 1440px));
   --accent: #b98a52;
   --name-accent: #b98a52;
   --tagline-accent: #8c6a3d;
