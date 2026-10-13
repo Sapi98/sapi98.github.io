@@ -22,6 +22,27 @@ const publications = [
 }`
   },
 
+  {
+    "type": "journal",
+    "typeLabel": "Journal Papers",
+    "year": 2026,
+    "title": "MagnoCluster: A physics-informed unsupervised learning framework for interpretable classification of magnetocaloric materials",
+    "authors": "S. Biswas, A. Biswas, Y. Mudryk, P. Singh",
+    "venue": "Acta Materialia, vol. 321, article 122833, 2026",
+    "link": "https://doi.org/10.1016/j.actamat.2026.122833",
+    "bibtex": `@article{Biswas2026MagnoCluster,
+  title = {MagnoCluster: A physics-informed unsupervised learning framework for interpretable classification of magnetocaloric materials},
+  author = {Biswas, Saptarshi and Biswas, Anis and Mudryk, Yaroslav and Singh, Prashant},
+  journal = {Acta Materialia},
+  volume = {321},
+  pages = {122833},
+  year = {2026},
+  issn = {1359-6454},
+  doi = {10.1016/j.actamat.2026.122833},
+  url = {https://doi.org/10.1016/j.actamat.2026.122833}
+}`
+  },
+
   // {
   //   "type": "journal",
   //   "typeLabel": "Journal Papers",
@@ -406,7 +427,7 @@ const publications = [
     "authors": "S. Biswas, A. Biswas, Y. Mudryk, P. Singh",
     "venue": "SSRN preprint, 2026",
     "link": "http://dx.doi.org/10.2139/ssrn.6828600",
-    "bibtex": `@misc{Biswas2026MagnoCluster,
+    "bibtex": `@misc{Biswas2026MagnoClusterSSRN,
   title = {MagnoCluster: A Physics-Informed Unsupervised Learning Framework for Interpretable Classification of Magnetocaloric Materials},
   author = {Saptarshi Biswas and Anis Biswas and Yaroslav Mudryk and Prashant Singh},
   year = {2026},
